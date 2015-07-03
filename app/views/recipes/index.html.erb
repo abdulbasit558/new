@@ -1,6 +1,6 @@
 <%= render 'shared/page_title', title: "All Recipes" %>
 
-
+<%= will_paginate %>
 <%= @recipes.each do |recipe| %>
  <div class = "row">
    
@@ -15,7 +15,8 @@
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <P><%= recipe.summary %></P> 
       <p>
-        <span class='quite'><small> <%= time_ago_in_words(recipe.created_at) %></small></span>
+        <span class='quite'><small> created: <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
+         <span class='quite'><small> updated <%= time_ago_in_words(recipe.updated_at) %> ago, </small></span>
       </p>
        <div class="pull-right">
           <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
@@ -31,3 +32,5 @@
     </div>
  </div>
  <% end %>
+ 
+ <%= will_paginate %>
