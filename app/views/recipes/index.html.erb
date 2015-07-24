@@ -23,8 +23,12 @@
     <div class = "col-md-6 well">
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <P><%= recipe.summary %></P> 
-      <p>Styles: <%= render recipe.styles %></p>
-      <p>Ingredients: <%= render recipe.ingredients %></p>
+      <% if recipe.styles.any? %>
+       <p>Styles: <%= render recipe.styles %></p>
+      <% end %>
+      <% if recipe.ingredients.any? %>
+       <p>Ingredients: <%= render recipe.ingredients %></p>
+      <% end %>
       <p>
         <span class='quite'><small> created: <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
          <span class='quite'><small> updated <%= time_ago_in_words(recipe.updated_at) %> ago, </small></span>
